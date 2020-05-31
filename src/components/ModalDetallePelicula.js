@@ -16,7 +16,7 @@ const ModalDetallePelicula = ({ imdbID }) => {
 
   const fetchDetallePelicula = async () => {
     const res = await fetch(
-      "http://www.omdbapi.com/?apikey=a24689ae&i=" + imdbID
+      "https://www.omdbapi.com/?apikey=a24689ae&i=" + imdbID
     );
     const data = await res.json();
 
@@ -83,7 +83,7 @@ const ModalDetallePelicula = ({ imdbID }) => {
 
                   <div className="mt-3">
                     <ul class="list-group">
-                      {detallePelicula.Ratings.map((rating) => {
+                      {detallePelicula.Ratings.map(rating => {
                         return (
                           <li
                             class="list-group-item d-flex justify-content-between"

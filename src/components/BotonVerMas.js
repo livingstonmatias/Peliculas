@@ -9,7 +9,7 @@ const BotonVerMas = () => {
 
   const fetchMasPeliculas = async () => {
     const res = await fetch(
-      `http://www.omdbapi.com/?apikey=a24689ae&s=${query}&page=${pagina}`
+      `https://www.omdbapi.com/?apikey=a24689ae&s=${query}&page=${pagina}`
     );
     const data = await res.json();
 

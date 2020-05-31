@@ -6,9 +6,23 @@ import ListadoPeliculas from "./containers/ListadoPeliculas";
 
 import { AppContext } from "./AppContext";
 
+const PELICULAS_ALEATORIAS = [
+  "batman",
+  "avenger",
+  "dragon",
+  "guerra",
+  "hacker"
+];
+
+function generaAleatorio() {
+  const numeroAleatorio = Math.floor(Math.random() * (5 - 1)) * 1;
+  return PELICULAS_ALEATORIAS[numeroAleatorio - 1];
+}
+
 function App() {
+  const queryAleatoria = generaAleatorio() || PELICULAS_ALEATORIAS[0];
   const [peliculas, setPeliculas] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(queryAleatoria);
   const [pagina, setPagina] = useState(2);
 
   return (

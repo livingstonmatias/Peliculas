@@ -1,18 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { AppContext } from "../AppContext";
 
 const Buscador = () => {
   const { setPeliculas, query, setQuery, setPagina } = useContext(AppContext);
 
-  const buscar = async (e) => {
-    e.preventDefault();
+  const buscar = async e => {
+    if (e) {
+      e.preventDefault();
+    }
 
     // Reseteo numero de pagina
     setPagina(2);
 
     const res = await fetch(
-      "http://www.omdbapi.com/?apikey=a24689ae&s=" + query
+      "https://www.omdbapi.com/?apikey=a24689ae&s=" + query
     );
     const data = await res.json();
 
@@ -20,6 +22,10 @@ const Buscador = () => {
       setPeliculas(data.Search);
     }
   };
+
+  useEffect(() => {
+    buscar();
+  }, []);
 
   return (
     <div className="form-group py-4 row">
@@ -30,7 +36,7 @@ const Buscador = () => {
             className="form-control form-control-lg rounded-pill"
             placeholder="Buscar por el nombre de tu pelicula"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={e => setQuery(e.target.value)}
           />
         </form>
       </div>
