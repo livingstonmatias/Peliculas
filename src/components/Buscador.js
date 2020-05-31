@@ -20,6 +20,8 @@ const Buscador = () => {
 
     if (data.Response === "True") {
       setPeliculas(data.Search);
+    } else {
+      setPeliculas([]);
     }
   };
 

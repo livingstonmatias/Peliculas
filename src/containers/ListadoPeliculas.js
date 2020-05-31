@@ -5,7 +5,7 @@ import CartaPelicula from "../components/CartaPelicula";
 import BotonVerMas from "../components/BotonVerMas";
 
 const ListadoPeliculas = () => {
-  const { peliculas } = useContext(AppContext);
+  const { peliculas, query } = useContext(AppContext);
 
   return (
     <>
@@ -18,6 +18,15 @@ const ListadoPeliculas = () => {
           );
         })}
       </div>
+
+      {peliculas.length === 0 && (
+        <div className="w-100 d-flex justify-content-center">
+          <div class="alert alert-danger" role="alert">
+            No se encontraron resultados para la busqueda de:{" "}
+            <strong>{query}</strong>
+          </div>
+        </div>
+      )}
       <BotonVerMas></BotonVerMas>
     </>
   );
